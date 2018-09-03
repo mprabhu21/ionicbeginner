@@ -3,8 +3,8 @@ import { NavController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { LoadingController } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../home/home';
 import { AboutPage } from '../about/about';
 import { ListPage } from '../list/list';
 
@@ -15,11 +15,15 @@ import { ListPage } from '../list/list';
 export class HomePage {
 	pages: Array<{ title: string, component: any }>;
 
-  constructor(public loader: LoadingController, public navCtrl: NavController, public http: Http, ) {
+  constructor(public loader: LoadingController, public navCtrl: NavController, public http: Http, private splashScreen: SplashScreen, ) {
     this.http = http;
     this.loader = loader;
+    this.aqi = '';
     this.aqi = { data: {} };
     this.reload();
+
+    this.splashScreen.show();
+
 
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -49,7 +53,7 @@ export class HomePage {
         loading.dismiss();
         console.log(error.json())
         let eloading = this.loader.create({
-          content: 'Connectivity Issue!',
+          content: 'Connecting!',
           duration: 6000
         });
         eloading.present();

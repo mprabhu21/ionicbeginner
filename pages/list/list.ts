@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { HomePage } from '../home/home';
-import { AboutPage } from '../about/about';
-import { ListPage } from '../list/list';
 
 /**
  * Generated class for the ListPage page.
@@ -19,10 +16,6 @@ import { ListPage } from '../list/list';
 })
 export class ListPage {
 	
-	tab1Root: any = HomePage;
-	tab2Root: any = AboutPage;
-	tab3Root: any = ListPage;
-
   	constructor(public navCtrl: NavController, public navParams: NavParams) {
   		
   	}
